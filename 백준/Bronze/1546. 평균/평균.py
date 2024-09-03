@@ -1,8 +1,9 @@
-n = int(input())
+N = int(input())
+A = list(map(int, input().split()))
 
-mylist = list(map(int, input().split()))
-mymax = max(mylist)
-sum = sum(mylist)
+M = max(A)
 
-avg = sum * 100 / mymax / int(n)
-print(avg)
+New_A = [(i/M) * 100 for i in A]
+average = sum(New_A) / N
+
+print(average)
