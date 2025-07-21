@@ -1,3 +1,3 @@
 inch = int(input())
 
-print("%.2f inch =>  %.2f cm" %(inch, inch*2.54))
+print(f'{inch:.2f} inch =>  {inch * 2.54:.2f} cm')
