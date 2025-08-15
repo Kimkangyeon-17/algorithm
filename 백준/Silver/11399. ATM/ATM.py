@@ -1,28 +1,12 @@
-n = int(input())
-A = list(map(int, input().split()))
-S = [0] * n
+T = int(input())
 
-for i in range(1, n):
-    insert_point = i
-    insert_value = A[i]
-    for j in range(i-1, -1, -1):
-        if A[j] < A[i]:
-            insert_point = j + 1
-            break
-        if j == 0:
-            insert_point = 0
-    for j in range(i, insert_point, -1):
-        A[j] = A[j-1]
-    A[insert_point] = insert_value
+numbers = list(map(int, input().split()))
 
-S[0] = A[0]
+numbers.sort()
 
-for i in range(1, n):
-    S[i] = S[i -1] + A[i]
+new_list = [0] * (T+1)
 
-sum = 0
+for i in range(1, T+1):
+    new_list[i] = new_list[i-1] + numbers[i-1]
 
-for i in range(0, n):
-    sum += S[i]
-
-print(sum)
+print(sum(new_list))
