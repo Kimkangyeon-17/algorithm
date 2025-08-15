@@ -1,11 +1,11 @@
 import sys
+
 input = sys.stdin.readline
 
 while True:
-    line = input().strip()
-    a, b = map(int,line.split())
+    A, B = map(int, input().split())
 
-    if a == 0 and b == 0:
+    if A == 0 and B == 0:
         break
 
-    print(a+b)
+    print(A + B)
