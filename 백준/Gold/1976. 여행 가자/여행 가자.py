@@ -1,45 +1,39 @@
+def find(x):
+    if parent[x] != x:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+def union(x, y):
+    root_x = find(x)
+    root_y = find(y)
+    if root_x != root_y:
+        parent[root_y] = root_x
+
+
 N = int(input())
 M = int(input())
-dosi = [[0 for j in range(N+1)] for i in range(N+1)]
 
-def find(a):
-    if a ==parent[a]:
-        return a
-    else:
-        parent[a] = find(parent[a])
-        return parent[a]
+parent = [i for i in range(N + 1)]
 
-def union(a, b):
-    a = find(a)
-    b = find(b)
-    if a != b:
-        parent[b] = a
+for i in range(N):
+    connections = list(map(int, input().split()))
 
-for i in range(1, N+1):
-    dosi[i] = list(map(int, input().split()))
-    dosi[i].insert(0, 0)
+    for j in range(N):
+        if connections[j] == 1:
+            union(i + 1, j + 1)
 
-route = list(map(int, input().split()))
-route.insert(0, 0)
 
-parent = [0]  * (N+1)
+plans = list(map(int, input().split()))
 
-for i in range(1, N+1):
-    parent[i] = i
+possible = True
 
-for i in range(1, N+1):
-    for j in range(1, N+1):
-        if dosi[i][j] == 1:
-            union(i, j)
+first_city = find(plans[0])
 
-index = find(route[1])
-isConnect = True
-for i in range(2, len(route)):
-    if index != find(route[i]):
-        isConnect = False
+for city in plans:
+    if find(city) != first_city:
+        possible = False
         break
-
-if isConnect:
-    print('YES')
+if possible:
+    print("YES")
 else:
-    print('NO')
+    print("NO")
