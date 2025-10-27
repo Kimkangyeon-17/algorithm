@@ -8,9 +8,10 @@ for _ in range(4):
             table[x][y] += 1
 
 total = 0
-for i in range(100):
-    for j in range(100):
-        if table[i][j] > 0:
+
+for x in range(100):
+    for y in range(100):
+        if table[x][y] >= 1:
             total += 1
 
 print(total)
